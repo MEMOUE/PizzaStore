@@ -2,8 +2,11 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using PizzaStore.Models;
 
-
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurer EF Core avec une base de données en mémoire
+builder.Services.AddDbContext<PizzaDb>(options =>
+    options.UseInMemoryDatabase("items"));
 
 // Ajouter Swagger pour la documentation
 builder.Services.AddEndpointsApiExplorer();
