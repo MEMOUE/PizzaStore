@@ -32,6 +32,14 @@ app.UseSwaggerUI(c =>
 // Exemple d'endpoint minimal
 app.MapGet("/", () => "Bonjour Sénégal!");
 
+app.MapPost("/pizza", async (PizzaDb db, PizzaEhod pizza) =>
+{
+    await db.Pizzas.AddAsync(pizza);
+    await db.SaveChangesAsync();
+    return Results.Created($"/pizza/{pizza.IdEhod}", pizza);
+});
+
+
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
 
