@@ -34,9 +34,9 @@ app.MapGet("/", () => "Bonjour Sénégal!");
 
 app.MapPost("/pizza", async (PizzaDb db, PizzaEhod pizza) =>
 {
-    await db.Pizzas.AddAsync(pizza);
-    await db.SaveChangesAsync();
-    return Results.Created($"/pizza/{pizza.IdEhod}", pizza);
+    await db.Pizzas.AddAsync(pizza); // Ajoute la pizza à la base de données
+    await db.SaveChangesAsync(); // Sauvegarde les modifications
+    return Results.Created($"/pizza/{pizza.IdEhod}", pizza); // Retourne la pizza créée avec son URI
 });
 
 

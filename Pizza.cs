@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace PizzaStore.Models
 {
-    // Classe représentant une Pizza
     public class PizzaEhod
     {
+        [Key]  // Marquer IdEhod comme clé primaire
         public int IdEhod { get; set; } // Identifiant unique
         public string? NomEhod { get; set; } // Nom de la pizza
         public string? DescriptionEhod { get; set; } // Description de la pizza
