@@ -39,6 +39,7 @@ app.MapPost("/pizza", async (PizzaDb db, PizzaEhod pizza) =>
     return Results.Created($"/pizza/{pizza.IdEhod}", pizza); // Retourne la pizza créée avec son URI
 });
 
+app.MapGet("/pizza/{id}", async (PizzaDb db, int id) => await db.Pizzas.FindAsync(id));
 
 app.MapGet("/pizzas", async (PizzaDb db) => await db.Pizzas.ToListAsync());
 
